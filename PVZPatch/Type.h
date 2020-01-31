@@ -1,0 +1,13 @@
+#define PEA 0
+#define ICE_PEA 1
+#define CABBAGE 2
+#define MELON 3
+#define PIN 8
+#define ICE_MELON 5
+#define SPORE 4
+#define CARAMBOLA 7
+#define BALL 9
+#define CORN 10
+#define CORN_BOMB 11
+#define BUTTER 12
+#define FIREBALL 6

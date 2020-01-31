@@ -1,0 +1,378 @@
+#include<vector>
+using namespace std;
+#ifdef API
+#elif
+#include"API.h"
+#endif
+struct item
+{
+	DWORD zombieType;
+	DWORD prob;
+};
+struct table
+{
+	vector<item> list;
+	DWORD maxium;
+}map[50];
+void ZombieRegister(DWORD pass,DWORD zombie,DWORD prob)
+{
+	if(pass==0)
+		return;
+	item tmp;
+	tmp.prob=prob;
+	tmp.zombieType=zombie;
+	map[pass].list.push_back(tmp);
+}
+void SpawnTableInit()
+{
+	ZombieRegister(1,0,100);
+	map[1].maxium=5;
+	ZombieRegister(2,0,80);
+	ZombieRegister(2,2,20);
+	map[2].maxium=5;
+	ZombieRegister(3,0,80);
+	ZombieRegister(3,2,20);
+	map[3].maxium=7;
+	ZombieRegister(4,0,60);
+	ZombieRegister(4,2,40);
+	map[4].maxium=7;
+	ZombieRegister(5,0,50);
+	ZombieRegister(5,2,40);
+	ZombieRegister(5,3,10);
+	ZombieRegister(5,4,10);
+	map[5].maxium=7;
+	ZombieRegister(6,0,50);
+	ZombieRegister(6,2,40);
+	ZombieRegister(6,3,10);
+	ZombieRegister(6,4,10);
+	map[6].maxium=8;
+	ZombieRegister(7,0,50);
+	ZombieRegister(7,2,40);
+	ZombieRegister(7,3,10);
+	ZombieRegister(7,4,10);
+	map[7].maxium=9;
+	ZombieRegister(8,0,50);
+	ZombieRegister(8,2,35);
+	ZombieRegister(8,3,10);
+	ZombieRegister(8,4,15);
+	map[8].maxium=10;
+	ZombieRegister(9,0,50);
+	ZombieRegister(9,2,30);
+	ZombieRegister(9,3,15);
+	ZombieRegister(9,4,15);
+	map[9].maxium=10;
+	ZombieRegister(10,0,50);
+	ZombieRegister(10,2,30);
+	ZombieRegister(10,3,15);
+	ZombieRegister(10,4,15);
+	map[10].maxium=10;
+
+	ZombieRegister(11,0,50);
+	ZombieRegister(11,2,50);
+	map[11].maxium=11;
+	ZombieRegister(12,0,20);
+	ZombieRegister(12,2,60);
+	ZombieRegister(12,4,20);
+	map[12].maxium=12;
+	ZombieRegister(13,0,10);
+	ZombieRegister(13,2,10);
+	ZombieRegister(13,3,20);
+	ZombieRegister(13,4,20);
+	ZombieRegister(13,5,40);
+	map[13].maxium=12;
+	ZombieRegister(14,0,50);
+	ZombieRegister(14,5,20);
+	ZombieRegister(14,6,30);
+	map[14].maxium=12;
+	/*ZombieRegister(15,0,25);
+	ZombieRegister(15,2,25);
+	ZombieRegister(15,5,20);
+	ZombieRegister(15,6,30);
+	map[15].maxium=14;*/
+	ZombieRegister(16,0,20);
+	ZombieRegister(16,2,15);
+	ZombieRegister(16,5,25);
+	ZombieRegister(16,6,32);
+	ZombieRegister(16,7,8);
+	map[16].maxium=14;
+	ZombieRegister(17,0,20);
+	ZombieRegister(17,2,15);
+	ZombieRegister(17,5,25);
+	ZombieRegister(17,6,20);
+	ZombieRegister(17,7,10);
+	ZombieRegister(17,8,20);
+	map[17].maxium=15;
+	ZombieRegister(18,0,20);
+	ZombieRegister(18,2,15);
+	ZombieRegister(18,4,25);
+	ZombieRegister(18,6,20);
+	ZombieRegister(18,7,10);
+	ZombieRegister(18,8,10);
+	map[18].maxium=15;
+	ZombieRegister(19,0,10);
+	ZombieRegister(19,2,15);
+	ZombieRegister(19,5,25);
+	ZombieRegister(19,6,20);
+	ZombieRegister(19,7,10);
+	ZombieRegister(19,8,20);
+	map[19].maxium=15;
+	ZombieRegister(20,8,100);
+	map[20].maxium=15;
+	ZombieRegister(21,0,10);
+	ZombieRegister(21,2,15);
+	ZombieRegister(21,10,25);
+	ZombieRegister(21,5,20);
+	ZombieRegister(21,12,10);
+	ZombieRegister(21,4,20);
+	map[21].maxium=10;
+	ZombieRegister(22,0,10);
+	ZombieRegister(22,2,15);
+	ZombieRegister(22,10,15);
+	ZombieRegister(22,5,20);
+	ZombieRegister(22,12,10);
+	ZombieRegister(22,4,20);
+	ZombieRegister(22,3,10);
+	map[22].maxium=12;
+	ZombieRegister(23,0,15);
+	ZombieRegister(23,12,10);
+	ZombieRegister(23,10,15);
+	ZombieRegister(23,2,20);
+	ZombieRegister(23,5,10);
+	ZombieRegister(23,4,20);
+	ZombieRegister(23,3,10);
+	map[23].maxium=12;
+	ZombieRegister(24,0,20);
+	ZombieRegister(24,2,15);
+	ZombieRegister(24,10,15);
+	ZombieRegister(24,12,10);
+	ZombieRegister(24,2,10);
+	ZombieRegister(24,4,20);
+	ZombieRegister(24,3,10);
+	map[24].maxium=14;
+	/*ZombieRegister(25,2,10);
+	ZombieRegister(25,16,15);
+	ZombieRegister(25,10,15);
+	ZombieRegister(25,12,15);
+	ZombieRegister(25,13,15);
+	ZombieRegister(25,4,20);
+	ZombieRegister(25,3,10);
+	map[25].maxium=14;*/
+	ZombieRegister(26,2,10);
+	ZombieRegister(26,5,15);
+	ZombieRegister(26,10,15);
+	ZombieRegister(26,12,20);
+	ZombieRegister(26,4,20);
+	ZombieRegister(26,3,20);
+	map[26].maxium=15;
+	ZombieRegister(27,22,10);
+	ZombieRegister(27,5,15);
+	ZombieRegister(27,10,15);
+	ZombieRegister(27,2,20);
+	ZombieRegister(27,18,10);
+	ZombieRegister(27,4,10);
+	ZombieRegister(27,23,10);
+	ZombieRegister(27,3,10);
+	map[27].maxium=15;
+	ZombieRegister(28,22,10);
+	ZombieRegister(28,5,15);
+	ZombieRegister(28,10,15);
+	ZombieRegister(28,2,10);
+	ZombieRegister(28,4,10);
+	ZombieRegister(28,19,5);
+	ZombieRegister(28,4,15);
+	ZombieRegister(28,21,10);
+	ZombieRegister(28,7,10);
+	map[28].maxium=15;
+	ZombieRegister(29,22,50);
+	ZombieRegister(29,12,50);
+	map[29].maxium=6;
+	ZombieRegister(30,22,10);
+	ZombieRegister(30,5,15);
+	ZombieRegister(30,10,15);
+	ZombieRegister(30,2,10);
+	ZombieRegister(30,4,10);
+	ZombieRegister(30,19,5);
+	ZombieRegister(30,4,15);
+	ZombieRegister(30,21,10);
+	ZombieRegister(30,7,10);
+	map[30].maxium=15;
+	ZombieRegister(31,0,30);
+	ZombieRegister(31,2,20);
+	ZombieRegister(31,4,20);
+	ZombieRegister(31,6,20);
+	ZombieRegister(31,7,10);
+	map[31].maxium=15;
+	ZombieRegister(32,0,25);
+	ZombieRegister(32,2,20);
+	ZombieRegister(32,4,20);
+	ZombieRegister(32,6,20);
+	ZombieRegister(32,7,15);
+	map[32].maxium=16;
+	ZombieRegister(33,0,30);
+	ZombieRegister(33,2,10);
+	ZombieRegister(33,8,10);
+	ZombieRegister(33,4,10);
+	ZombieRegister(33,6,10);
+	ZombieRegister(33,16,10);
+	ZombieRegister(33,7,10);
+	ZombieRegister(33,12,10);
+	map[33].maxium=16;
+	ZombieRegister(34,0,30);
+	ZombieRegister(34,2,10);
+	ZombieRegister(34,8,10);
+	ZombieRegister(34,4,10);
+	ZombieRegister(34,6,10);
+	ZombieRegister(34,16,10);
+	ZombieRegister(34,7,10);
+	ZombieRegister(34,12,10);
+	map[34].maxium=16;
+	ZombieRegister(35,5,30);
+	ZombieRegister(35,2,10);
+	ZombieRegister(35,8,10);
+	ZombieRegister(35,4,10);
+	ZombieRegister(35,6,10);
+	ZombieRegister(35,16,10);
+	ZombieRegister(35,0,20);
+	map[35].maxium=15;
+	ZombieRegister(36,0,20);
+	ZombieRegister(36,2,20);
+	ZombieRegister(36,8,10);
+	ZombieRegister(36,4,10);
+	ZombieRegister(36,6,10);
+	ZombieRegister(36,16,10);
+	ZombieRegister(36,7,10);
+	ZombieRegister(36,5,10);
+	map[36].maxium=18;
+	ZombieRegister(37,0,20);
+	ZombieRegister(37,3,20);
+	ZombieRegister(37,8,10);
+	ZombieRegister(37,4,10);
+	ZombieRegister(37,6,15);
+	ZombieRegister(37,16,5);
+	ZombieRegister(37,7,10);
+	ZombieRegister(37,5,20);
+	map[37].maxium=18;
+	ZombieRegister(38,16,100);
+	map[38].maxium=18;
+	ZombieRegister(39,5,100);
+	map[39].maxium=18;
+	ZombieRegister(40,10,100);
+	map[39].maxium=1;
+	ZombieRegister(41,2,20);
+	ZombieRegister(41,4,20);
+	ZombieRegister(41,5,10);
+	ZombieRegister(41,21,10);
+	ZombieRegister(41,22,10);
+	ZombieRegister(41,23,10);
+	ZombieRegister(41,7,10);
+	ZombieRegister(41,8,10);
+	map[41].maxium=17;
+	ZombieRegister(42,2,20);
+	ZombieRegister(42,4,20);
+	ZombieRegister(42,5,10);
+	ZombieRegister(42,21,10);
+	ZombieRegister(42,22,10);
+	ZombieRegister(42,23,15);
+	ZombieRegister(42,7,5);
+	ZombieRegister(42,8,10);
+	map[42].maxium=17;
+	ZombieRegister(43,2,20);
+	ZombieRegister(43,4,20);
+	ZombieRegister(43,5,10);
+	ZombieRegister(43,21,10);
+	ZombieRegister(43,22,10);
+	ZombieRegister(43,23,18);
+	ZombieRegister(43,7,5);
+	ZombieRegister(43,8,7);
+	map[43].maxium=17;
+	ZombieRegister(44,2,20);
+	ZombieRegister(44,4,20);
+	ZombieRegister(44,5,10);
+	ZombieRegister(44,21,10);
+	ZombieRegister(44,22,10);
+	ZombieRegister(44,23,23);
+	ZombieRegister(44,8,7);
+	map[44].maxium=17;
+	ZombieRegister(45,2,20);
+	ZombieRegister(45,4,10);
+	ZombieRegister(45,5,10);
+	ZombieRegister(45,21,10);
+	ZombieRegister(45,22,10);
+	ZombieRegister(45,23,33);
+	ZombieRegister(45,8,7);
+	map[45].maxium=17;	
+	ZombieRegister(46,2,20);
+	ZombieRegister(46,4,20);
+	ZombieRegister(46,5,10);
+	ZombieRegister(46,21,10);
+	ZombieRegister(46,22,10);
+	ZombieRegister(46,23,23);
+	ZombieRegister(46,8,7);
+	map[46].maxium=17;
+	ZombieRegister(47,2,10);
+	ZombieRegister(47,4,10);
+	ZombieRegister(47,5,10);
+	ZombieRegister(47,21,20);
+	ZombieRegister(47,22,10);
+	ZombieRegister(47,23,33);
+	ZombieRegister(47,8,7);
+	map[46].maxium=17;
+	ZombieRegister(48,2,10);
+	ZombieRegister(48,4,10);
+	ZombieRegister(48,5,10);
+	ZombieRegister(48,21,20);
+	ZombieRegister(48,22,10);
+	ZombieRegister(48,23,40);
+	map[48].maxium=17;
+	ZombieRegister(49,4,10);
+	ZombieRegister(49,5,10);
+	ZombieRegister(49,21,20);
+	ZombieRegister(49,22,10);
+	ZombieRegister(49,23,50);
+	map[49].maxium=17;
+}
+void GenZombie(DWORD game,DWORD pass)
+{
+	int r=rand()%100,t=0;
+	for(int i=0;i<map[pass].list.size();i++)
+	{
+		t+=map[pass].list[i].prob;
+		if(t>r)
+		{
+			SpawnZombie(game,map[pass].list[i].zombieType);
+			break;
+		}
+	}
+}
+void ZombieSpawnTimer(DWORD game)
+{
+	if(ReadDWORD(game,GAME_SPAWN_ZOMBIE_TIMER)>=0 && ReadDWORD(game,GAME_SPAWN_ZOMBIE_TIMER)<=1)
+	{
+		if(zombie_list.size>300)
+			return;
+		int pass=ReadDWORD(game,GAME_PASS);
+		if(pass==0 || pass==15 || pass==25 || pass==40)
+		{
+			/*int x=rand()%10+5;
+			while(x--)
+			{
+				int type=rand()%24;
+				if(type==15 || type==19)
+					type++;
+				SpawnZombie(game,type);
+			}
+			return;*/
+			return;
+		}
+		int x=rand()%(map[pass].maxium)+4;
+		DWORD sun=ReadDWORD(game,0x5578);
+		if(sun<150)
+			x=x*2/3;
+		x=x*sun/200;
+		if(plant_list.size>=25)
+			x*=2;
+		while(x--)
+			GenZombie(game,pass);
+	}
+		
+}
